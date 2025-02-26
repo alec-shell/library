@@ -12,7 +12,25 @@
     <div class="sidebar">
         <h1>Reading Tracker</h1>
         
-        <button class="create-book">Add Book</button>
+        <form class="book-form">
+            <ul class="book-form-ul">
+                <li>
+                    <label for="book-title">Book title: </label>
+                    <input name="book-title" class="book-title" required>
+                </li>
+                <li>
+                    <label for="book-author">Book author:</label>
+                    <input name="book-author" class="book-author" required>
+                </li>
+                <li>
+                    <label for="page-count">Pages: </label>
+                    <input type="number" name="page-count" class="page-count" required>
+                </li>
+                <li>
+                    <button class="create-book">Add Book</button>
+                </li>
+            </ul>
+        </form>
     </div>
 
     <main class="content-container"></main>

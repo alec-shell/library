@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
     text-align: center;
 }
 
@@ -33,17 +34,42 @@ body {
     align-items: center;
 }
 
+.book-form-ul {
+    list-style-type: none;
+    border: 1px solid red;
+}
+
+.book-form-ul li {
+    padding: 1vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.book-form input {
+    border: none;
+    border-radius: .5vh;
+}
+
 .create-book {
-    margin-top: 20vh;
+    margin-top: 1vh;
     width: 20vh;
-    height: 10vh;
+    height: 9vh;
 
     border: none;
     border-radius: 2vh;
 
     background-color: rgb(9, 29, 94);
-    color: white;
+    color: #ffffff;
     font-weight: bold;
+}
+
+.create-book:hover {
+    background-color: rgb(7, 24, 75);
+}
+
+.create-book:active {
+    background-color: rgb(6, 18, 59);
 }
 
 .content-container {
@@ -59,7 +85,7 @@ body {
 .content-container div {
     height: 250px;
     background-color: #292b36;
-    color: white;
+    color: #ffffff;
     border: 1vh solid #a38f36;
     border-radius: 2vh;
 }
