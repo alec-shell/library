@@ -35,8 +35,8 @@ body {
 }
 
 .book-form-ul {
+    margin-top: 10vh;
     list-style-type: none;
-    border: 1px solid red;
 }
 
 .book-form-ul li {
@@ -49,6 +49,8 @@ body {
 .book-form input {
     border: none;
     border-radius: .5vh;
+    height: 3vh;
+
 }
 
 .create-book {
@@ -77,7 +79,7 @@ body {
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
-    gap: 5vh;
+    gap: 7vh;
 
     padding: 10vh;
 }

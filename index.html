@@ -12,7 +12,7 @@
     <div class="sidebar">
         <h1>Reading Tracker</h1>
         
-        <form class="book-form">
+        <form class="book-form" onsubmit="return false">
             <ul class="book-form-ul">
                 <li>
                     <label for="book-title">Book title: </label>
@@ -25,6 +25,10 @@
                 <li>
                     <label for="page-count">Pages: </label>
                     <input type="number" name="page-count" class="page-count" required>
+                </li>
+                <li>
+                    <label for="is-read">Have you read it already?</label>
+                    <input type="checkbox" name="is-read" class="is-read"> 
                 </li>
                 <li>
                     <button class="create-book">Add Book</button>
