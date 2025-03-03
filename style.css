@@ -18,7 +18,7 @@ body {
     width: 100%;
 
     display: grid;
-    grid-template-columns: 6% 94%;
+    grid-template-columns: 8% 92%;
 }
 
 .sidebar {
@@ -46,6 +46,8 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, 38vh);
     gap: 3vh;
+    justify-content: center;
+    align-items: center;
 
     padding: 10vh;
 }
