@@ -1,51 +1,61 @@
-let myLibrary = [];
+const myLibrary = [];
 
-myLibrary[0] = new Book("The Good Earth", "Pearl Buckman", 302);
-myLibrary[1] = new Book("1984", "George Orwell", 324);
-myLibrary[2] = new Book("The Pillars of the Earth", "Ken Follett", 1040);
-myLibrary[3] = new Book("Brave New Word", "Aldous Huxley", 250);
+myLibrary[0] = new Book("1984", "George Orwell", 324, false);
+myLibrary[1] = new Book("The Pillars of the Earth", "Ken Follett", 1040, false);
+myLibrary[2] = new Book("Brave New Word", "Aldous Huxley", 250, true);
+myLibrary[3] = new Book("The Good Earth", "Pearl Buckman", 302, false);
 
 
-let container = document.querySelector(".content-container");
-let newEntry = document.querySelector(".create-book");
-let newTitle = document.querySelector(".book-title");
-let newAuthor = document.querySelector(".book-author");
-let pageCount = document.querySelector(".page-count");
-let isRead = document.querySelector(".is-read");
+const container = document.querySelector(".content-container"); //container for book divs
+const newEntry = document.querySelector(".create-book"); //form submit button
+const newTitle = document.querySelector(".book-title");  //form field
+const newAuthor = document.querySelector(".book-author");  //form field
+const pageCount = document.querySelector(".page-count");  //form field
+const isRead = document.querySelector(".is-read");  //checkbox
 
 //populate page with initial myLibrary
 myLibrary.forEach((book) => displayBook(book));
 
-newEntry.addEventListener("click", () => addBookToLibrary(newTitle.value, newAuthor.value, pageCount.value, isRead.checked));
+newEntry.addEventListener("click", () => addBookToLibrary(newTitle.value, newAuthor.value, pageCount.value, !isRead.checked));
 
-function Book(title, author, pages, read) {
+//book constructor
+function Book(title, author, pages, read) {  
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
 };
 
+
 function addBookToLibrary(title, author, pages, read) {
     if (!title || !author || !Number(pages)) { //are form fields filled out correctly? 
         return;
     }
-    newBook = new Book(title, author, pages, read, read);
+    newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     displayBook(newBook);
 };
 
+
 function displayBook(book) {
-    bookDisplay = document.createElement("div");
-    readButton = document.createElement("button");
-    deleteButton = document.createElement("button");
+    let bookDisplay = document.createElement("div");  //container div
+    let buttonSpan = document.createElement("span");  //buttons container
+    let readButton = document.createElement("button");
+    let deleteButton = document.createElement("button");
+
     bookDisplay.innerHTML = `<h2>${book.title}</h2>
                             <h3>Author: ${book.author}</h3>
-                            <h3>Pages: ${book.pages}</h3>
-                            <span class=book-buttons>
-                            <button class=is-read>Have Not Read</button>
-                            <button class=delete>Delete Book</button>
-                            </span>`;
+                            <h3>Pages: ${book.pages}</h3>`;
 
+    setReadButton(book, readButton);
+    deleteButton.textContent = 'Delete';
+
+    deleteButton.addEventListener("click", () => deleteBook(book, bookDisplay));
+    readButton.addEventListener("click", (e) => setReadButton(book, e.target)); 
+
+    buttonSpan.appendChild(deleteButton);
+    buttonSpan.appendChild(readButton); 
+    bookDisplay.appendChild(buttonSpan);
     container.appendChild(bookDisplay);
 
     //reset form fields
@@ -53,4 +63,39 @@ function displayBook(book) {
     newAuthor.value = "";
     pageCount.value = "";
     isRead.checked = false;
+
+    getBackground(book.title, book.author, bookDisplay);
 };
+
+
+function setReadButton(book, button) {
+    if (!book.read) {
+        book.read = true;
+        button.style.backgroundColor = "rgb(20, 100, 160)";
+        button.textContent = "Read It!";
+    }
+    else {
+        book.read = false;
+        button.style.backgroundColor = "rgb(20, 45, 94)";
+        button.textContent = "Not Read...";
+    }
+}
+
+
+function deleteBook(book, bookDisplay) {
+    myLibrary.pop(book);
+    container.removeChild(bookDisplay);
+}
+
+
+async function getBackground(title, author, bookDisplay) {
+    title = String(title).replaceAll(" ", "+");
+    author = String(author).replaceAll(" ", "+");
+
+    fetch(`https://bookcover.longitood.com/bookcover?book_title=${title}&author_name=${author}`)
+    .then(res => {
+        return res.json();
+    }).then( res => {
+        bookDisplay.style.backgroundImage = `url(${res.url})`;
+    });
+}

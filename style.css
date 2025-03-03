@@ -9,7 +9,7 @@ html,
 body {
     padding: 0;
 
-    background-image: linear-gradient(to bottom, rgb(55, 74, 109), rgb(26, 41, 70));
+    background-image: linear-gradient(to bottom, rgb(77, 96, 133), rgb(26, 41, 70));
     text-align: center;
 }
 
@@ -37,6 +37,10 @@ body {
 .book-form-ul {
     margin-top: 10vh;
     list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .book-form-ul li {
@@ -50,7 +54,11 @@ body {
     border: none;
     border-radius: .5vh;
     height: 3vh;
+}
 
+.book-form input:not(.is-read):focus{
+    appearance: none;
+    outline: #a38f36 solid .5vh;
 }
 
 .create-book {
@@ -85,9 +93,34 @@ body {
 }
 
 .content-container div {
-    height: 250px;
+    height: 70vh;
     background-color: #292b36;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #ffffff;
     border: 1vh solid #a38f36;
     border-radius: 2vh;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    justify-content: space-between;
+
+    padding: 1vh;
+}
+
+.content-container div button {
+    height: 5vh;
+    width: 15vh;
+
+    border: none;
+    border-radius: 2vh;
+    background-color: rgb(80,80,80);
+    color: white;
+}
+
+.content-container div span {
+    display: flex;
+    gap: 2vh;
+    justify-content: center;
 }
