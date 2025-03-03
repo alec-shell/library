@@ -1,9 +1,10 @@
 const myLibrary = [];
 
-myLibrary[0] = new Book("1984", "George Orwell", 324, false);
-myLibrary[1] = new Book("The Pillars of the Earth", "Ken Follett", 1040, false);
-myLibrary[2] = new Book("Brave New Word", "Aldous Huxley", 250, true);
-myLibrary[3] = new Book("To Kill A Mockingbird", "Harper Lee", 302, false);
+myLibrary[0] = new Book("1984", "George Orwell", 320, false);
+myLibrary[1] = new Book("The Pillars of the Earth", "Ken Follett", 1092, false);
+myLibrary[2] = new Book("Brave New Word", "Aldous Huxley", 288, true);
+myLibrary[3] = new Book("To Kill A Mockingbird", "Harper Lee", 336, false);
+myLibrary[4] = new Book("The Illiad", "Homer", 683, true);
 
 const container = document.querySelector(".content-container"); //container for book divs
 const dialog = document.querySelector(".dialog-intake");
