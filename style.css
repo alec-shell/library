@@ -15,7 +15,7 @@ body {
 
 body {
     height: 100%;
-    width: 100%;
+    width: 100vw;
 
     display: grid;
     grid-template-columns: 1fr 10fr;
@@ -38,28 +38,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
-}
-
-.create-book {
-    margin-top: 1vh;
-    width: 20vh;
-    height: 9vh;
-
-    border: none;
-    border-radius: 2vh;
-
-    background-color: rgb(9, 29, 94);
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.create-book:hover {
-    background-color: rgb(7, 24, 75);
-}
-
-.create-book:active {
-    background-color: rgb(6, 18, 59);
 }
 
 .content-container {
@@ -123,6 +101,7 @@ button:hover {
 }
 
 .dialog-intake {
+    margin: auto;
     width: 60vh;
     background-color: #292b36;
     border: 1vh solid #a38f36;
