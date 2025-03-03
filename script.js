@@ -3,10 +3,12 @@ const myLibrary = [];
 myLibrary[0] = new Book("1984", "George Orwell", 324, false);
 myLibrary[1] = new Book("The Pillars of the Earth", "Ken Follett", 1040, false);
 myLibrary[2] = new Book("Brave New Word", "Aldous Huxley", 250, true);
-myLibrary[3] = new Book("The Good Earth", "Pearl Buckman", 302, false);
-
+myLibrary[3] = new Book("To Kill A Mockingbird", "Harper Lee", 302, false);
 
 const container = document.querySelector(".content-container"); //container for book divs
+const dialog = document.querySelector(".dialog-intake");
+const requestEntry = document.querySelector(".add-new-book"); //open dialogue
+const closeDialog = document.querySelector(".close-dialog");
 const newEntry = document.querySelector(".create-book"); //form submit button
 const newTitle = document.querySelector(".book-title");  //form field
 const newAuthor = document.querySelector(".book-author");  //form field
@@ -16,6 +18,8 @@ const isRead = document.querySelector(".is-read");  //checkbox
 //populate page with initial myLibrary
 myLibrary.forEach((book) => displayBook(book));
 
+requestEntry.addEventListener("click", () => dialog.showModal());
+closeDialog.addEventListener("click", () => dialog.close());
 newEntry.addEventListener("click", () => addBookToLibrary(newTitle.value, newAuthor.value, pageCount.value, !isRead.checked));
 
 //book constructor
@@ -34,6 +38,7 @@ function addBookToLibrary(title, author, pages, read) {
     newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     displayBook(newBook);
+    dialog.close();
 };
 
 
@@ -67,7 +72,7 @@ function displayBook(book) {
     getBackground(book.title, book.author, bookDisplay);
 };
 
-
+//toggle read/not read
 function setReadButton(book, button) {
     if (!book.read) {
         book.read = true;
@@ -88,6 +93,7 @@ function deleteBook(book, bookDisplay) {
 }
 
 
+//auto-source background img
 async function getBackground(title, author, bookDisplay) {
     title = String(title).replaceAll(" ", "+");
     author = String(author).replaceAll(" ", "+");

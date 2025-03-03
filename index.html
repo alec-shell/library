@@ -3,40 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odin-Library</title>
-    <script src="script.js" defer></script>
+    <title>The Book Nook</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
     <div class="sidebar">
-        <h1>Reading Tracker</h1>
-        
-        <form class="book-form" onsubmit="return false">
-            <ul class="book-form-ul">
-                <li>
-                    <label for="book-title">Book title: </label>
-                    <input name="book-title" class="book-title" required>
-                </li>
-                <li>
-                    <label for="book-author">Book author:</label>
-                    <input name="book-author" class="book-author" required>
-                </li>
-                <li>
-                    <label for="page-count">Pages: </label>
-                    <input type="number" name="page-count" class="page-count" required>
-                </li>
-                <li>
-                    <label for="is-read">Have you read it already?</label>
-                    <input type="checkbox" name="is-read" class="is-read"> 
-                </li>
-                <li>
-                    <button class="create-book">Add Book</button>
-                </li>
-            </ul>
-        </form>
+        <h1>The Book Nook</h1>
     </div>
 
-    <main class="content-container"></main>
+    <main class="content-container">
+        <button class="add-new-book">+</button>
+        <dialog class="dialog-intake">
+            <form class="book-form" onsubmit="return false">
+                <ul class="book-form-ul">
+                    <li>
+                        <label for="book-title">Book title: </label>
+                        <input name="book-title" class="book-title" required>
+                    </li>
+                    <li>
+                        <label for="book-author">Book author:</label>
+                        <input name="book-author" class="book-author" required>
+                    </li>
+                    <li>
+                        <label for="page-count">Pages: </label>
+                        <input type="number" name="page-count" class="page-count" required>
+                    </li>
+                    <li>
+                        <label for="is-read">Have you read it already?</label>
+                        <input type="checkbox" name="is-read" class="is-read"> 
+                    </li>
+                    <li>
+                        <span class="dialog-buttons">
+                            <button class="close-dialog">Close</button>
+                            <button class="create-book">Submit</button>    
+                        </span>
+                    </li>
+                </ul>
+            </form>
+        </dialog>
+    </main>
 </body>
 </html>
