@@ -106,15 +106,16 @@ async function getBackground(title, author, bookDisplay) {
     fetch(`https://bookcover.longitood.com/bookcover?book_title=${title}&author_name=${author}`)
     .then(res => {
         if (res.ok) {
+            bookDisplay.classList.add("bg-success");
             return res.json();
         }
         else {
-            console.log("ERROR");
-            bookDisplay.classList.add("background-error");
-            return res;
+            return;
         }
-    }).then( res => {
+    })
+    .then( res => {
         bookDisplay.style.backgroundImage = `url(${res.url})`;
 
-    });
+    })
+    .catch(() => console.log("No background found."));
 }

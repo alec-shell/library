@@ -115,10 +115,10 @@ body {
     background-color: rgb(80,80,80,.8);
     border-radius: 2vh;
 
-    opacity: 0%;
-}
-.background-error .book-info {
     opacity: 100%;
+}
+.bg-success .book-info {
+    opacity: 0%;
 }
 
 .book-info:hover {
