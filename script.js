@@ -5,6 +5,10 @@ myLibrary[1] = new Book("The Pillars of the Earth", "Ken Follett", 1092, false);
 myLibrary[2] = new Book("Brave New Word", "Aldous Huxley", 288, true);
 myLibrary[3] = new Book("To Kill A Mockingbird", "Harper Lee", 336, false);
 myLibrary[4] = new Book("The Illiad", "Homer", 683, true);
+myLibrary[5] = new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 320, true);
+myLibrary[6] = new Book("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling", 435, false);
+myLibrary[7] = new Book("The Hobbit", "J.R.R. Tolkien", 310, false);
+myLibrary[8] = new Book("The Good Earth", "Pearl S. Buck", 418, false);
 
 const container = document.querySelector(".content-container"); //container for book divs
 const dialog = document.querySelector(".dialog-intake");
@@ -101,8 +105,16 @@ async function getBackground(title, author, bookDisplay) {
 
     fetch(`https://bookcover.longitood.com/bookcover?book_title=${title}&author_name=${author}`)
     .then(res => {
-        return res.json();
+        if (res.ok) {
+            return res.json();
+        }
+        else {
+            console.log("ERROR");
+            bookDisplay.classList.add("background-error");
+            return res;
+        }
     }).then( res => {
         bookDisplay.style.backgroundImage = `url(${res.url})`;
+
     });
 }

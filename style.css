@@ -117,6 +117,9 @@ body {
 
     opacity: 0%;
 }
+.background-error .book-info {
+    opacity: 100%;
+}
 
 .book-info:hover {
     opacity: 100%;
