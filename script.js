@@ -49,9 +49,9 @@ function displayBook(book) {
     let readButton = document.createElement("button");
     let deleteButton = document.createElement("button");
 
-    bookDisplay.innerHTML = `<h2>${book.title}</h2>
+    bookDisplay.innerHTML = `<span class="book-info"><h2>${book.title}</h2>
                             <h3>Author: ${book.author}</h3>
-                            <h3>Pages: ${book.pages}</h3>`;
+                            <h3>Pages: ${book.pages}</h3></span>`;
 
     setReadButton(book, readButton);
     deleteButton.textContent = 'Delete';
