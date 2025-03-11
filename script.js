@@ -99,7 +99,7 @@ function deleteBook(book, bookDisplay) {
 
 
 //auto-source background img
-async function getBackground(title, author, bookDisplay) {
+function getBackground(title, author, bookDisplay) {
     title = String(title).replaceAll(" ", "+");
     author = String(author).replaceAll(" ", "+");
 
